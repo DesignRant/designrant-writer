@@ -1,0 +1,46 @@
+$brand-colors: ('white', white, #1c1c1c), ('black', #000, white), ('grey', #2e4052, #f9f9f9),
+  ('light-grey', #f9f9f9, #121212), 
+  ('light-grey-highlight', #e6e6e6, #262626), 
+  ('black-highlight', #2d2d2d, #e9e9e9), 
+  ('white-highlight', #e9e9e9, #2d2d2d), 
+  ('special-blue', #067bc2, #77cbff),
+  ('light-blue', #49aab7, #49aab7),
+  ('yellow', #fcea87, #fcea87);
+
+@each $color in $brand-colors {
+  .is-#{nth($color,1)}-bg {
+    background-color: nth($color, 2);
+  }
+  .is-#{nth($color,1)}-border {
+    border-color: nth($color, 2);
+    border-style: solid;
+    border-width: 2px;
+  }
+  .is-#{nth($color,1)} {
+    color: nth($color, 2);
+  }
+  .is-#{nth($color,1)}-bg-always {
+    background-color: nth($color, 2) !important;
+  
+  }
+  .is-#{nth($color,1)}-border-always {
+    border-color: nth($color, 2) !important;
+    border-style: solid;
+    border-width: 2px;
+  }
+  .is-#{nth($color,1)}-always {
+    color: nth($color, 2) !important;
+  }
+
+  body.dark-mode {
+    .is-#{nth($color,1)} {
+      color: nth($color, 3);
+    }
+    .is-#{nth($color,1)}-bg {
+      background-color: nth($color, 3);
+    }
+    .is-#{nth($color,1)}-border {
+      border-color: nth($color, 3);
+    }
+  }
+}

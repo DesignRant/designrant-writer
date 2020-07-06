@@ -1,0 +1,38 @@
+.tag-row {
+    @extend  .flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    @extend .pad-1-tb;
+    @extend .pad-2-lr; 
+    @extend .margin-0;
+    @extend .margin-1-r;
+    @extend .margin-1-t;
+    @extend .border-radius-sm ;
+}
+
+.tag-link {
+    @extend .tag ;
+    @extend .is-light-grey-bg ;
+    @extend .is-black ;
+}
+
+.tag-link-secondary {
+    &:hover{
+        @extend .is-white-highlight-bg ;
+    }
+    @extend .tag ;
+    @extend .is-white-bg ;
+    @extend .is-black ;   
+}
+
+.tag-primary {
+    @extend .tag;
+    @extend .is-light-grey-bg ;
+    @extend .is-black ;
+
+    &:hover{
+        @extend .is-light-grey-highlight-bg ;
+    }    
+}
