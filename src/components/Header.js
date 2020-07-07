@@ -15,7 +15,6 @@ export default ({ loggedIn }) => {
           <Link to="/home">
             <div className="flex align-horizontal">
               <img src={Logo} className="grow logo" />
-              <h3 className="margin-0 margin-2-l">Writer</h3>
             </div>
           </Link>
         </div>

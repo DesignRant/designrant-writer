@@ -3,7 +3,10 @@ import ReactMde from "react-mde"
 import { format } from "date-fns"
 import * as Showdown from "showdown"
 import ImageUploader from "react-images-upload"
-import "react-mde/lib/styles/css/react-mde-all.css"
+import "react-mde/lib/styles/scss/react-mde-editor.scss"
+import "react-mde/lib/styles/scss/react-mde-toolbar.scss"
+import "react-mde/lib/styles/scss/react-mde.scss"
+import SEO from "../seo"
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -13,7 +16,9 @@ const converter = new Showdown.Converter({
 })
 
 export default ({ user }) => {
-  const [value, setValue] = useState("**Hello world!!!**")
+  const [value, setValue] = useState(
+    "### Introduction\nThis is my introduction to my awesome article"
+  )
   const [selectedTab, setSelectedTab] = useState("write")
   const [picture, setPicture] = useState()
   const [data, setData] = useState({})
@@ -39,43 +44,80 @@ export default ({ user }) => {
   }
   return (
     <div className="container-small">
+      <SEO title="Write" />
       <div className="row pad-5-t">
         <div className="col-xs-12 col-md-9">
           <div
-            className={` is-white-bg ${
-              selectedTab === "write" ? "pad-1-t pad-2-lr" : ""
+            className={` is-white-bg margin-5-b ${
+              selectedTab === "write" ? "pad-1-t pad-2-lr" : " "
             }`}
           >
             {selectedTab === "preview" ? (
               <>
-                <img
-                  src={picture}
-                  className="shadow"
-                  style={{ width: "100%", maxHeight: 300, objectFit: "cover" }}
-                />
-                <div className=" pad-3">
-                  <h1
+                {picture ? (
+                  <img
+                    src={picture}
+                    className="shadow"
                     style={{
-                      marginBottom: 0,
+                      width: "100%",
+                      maxHeight: 300,
+                      objectFit: "cover",
                     }}
+                  />
+                ) : (
+                  <div
+                    className="shadow fill-width is-black-bg is-white opacity-30 flex align-horizontal align-vertical"
+                    style={{ height: 300 }}
                   >
-                    {data.title}
-                  </h1>
+                    <h1 className="margin-1-b">No cover image to display.</h1>
+                    <p className="margin-1-t">
+                      To add one, go back to the edit panel and upload either a
+                      png or jpg.
+                    </p>
+                  </div>
+                )}
+                <div className=" pad-3">
+                  {data.title ? (
+                    <h1
+                      style={{
+                        marginBottom: 0,
+                      }}
+                    >
+                      {data.title}
+                    </h1>
+                  ) : (
+                    <h1
+                      className="opacity-40"
+                      style={{
+                        marginBottom: 0,
+                      }}
+                    >
+                      Your Post's Title
+                    </h1>
+                  )}
                   <div className="flex align-horizontal margin-2-t">
                     <p className="is-black margin-0 margin-1-r">
                       {format(new Date(), "MMMM dd, yyyy")}
                     </p>
                   </div>
                   <div className="flex align-horizontal margin-2-t">
-                    {data.tags.split(",").map((item, index) => (
-                      <p
-                        className={`tag-primary ${
-                          index !== 0 ? "margin-1-l" : ""
-                        }`}
-                      >
-                        {item.trim()}
+                    {data.tags ? (
+                      data.tags
+                        .split(",")
+                        .map((item, index) => (
+                          <p
+                            className={`tag-primary ${
+                              index !== 0 ? "margin-1-l" : ""
+                            }`}
+                          >
+                            {item.trim()}
+                          </p>
+                        ))
+                    ) : (
+                      <p className="opacity-50 margin-0-b">
+                        Your tags will appear here.
                       </p>
-                    ))}
+                    )}
                   </div>
                 </div>
               </>
@@ -155,7 +197,9 @@ export default ({ user }) => {
               onTabChange={switchTab}
               classes={{
                 reactMde: ` ${
-                  selectedTab === "preview" ? "react-mde-no-border " : ""
+                  selectedTab === "preview"
+                    ? "react-mde-no-border pad-3-lr"
+                    : ""
                 }`,
                 toolbar: `lato ${
                   selectedTab === "preview" ? "mde-header-hide" : ""
@@ -171,7 +215,7 @@ export default ({ user }) => {
           <div className=" is-white-bg pad-3">
             <p className="margin-1-t">
               {selectedTab === "preview"
-                ? "Go back to editing your article."
+                ? "Go back to editing your awesome article."
                 : " Preview your article as it will appear on DesignRant."}
             </p>
             <button

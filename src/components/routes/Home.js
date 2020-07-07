@@ -1,10 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
+import SEO from "../seo"
 
 export default ({ user }) => {
   console.log(user)
   return (
     <div className="container-small">
+      <SEO title="Home" />
       <div className="row pad-5-t">
         <div className="col-xs-12 col-md-4">
           <div className="margin-1 is-white-bg pad-3">
