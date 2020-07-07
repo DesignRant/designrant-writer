@@ -20,6 +20,11 @@ export default ({ user }) => {
             <button className="bubble-button border-radius fill-width">
               Edit Info
             </button>
+            <Link to="/home/stats">
+              <button className=" margin-1-t bubble-button border-radius fill-width">
+                Author Stats
+              </button>
+            </Link>
           </div>
         </div>
         <div className="col-xs-12 col-md-8">

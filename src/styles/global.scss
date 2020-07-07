@@ -3,18 +3,19 @@
 @import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@3/distr/fira_code.css);
 
 //files;
-@import './layout';
-@import './colors';
-@import './inputs';
-@import './opacity';
-@import './margin_padding';
-@import './buttons';
-@import './hero';
-@import './utilities';
-@import './avatar';
-@import './animista.scss';
-@import './social.scss';
-@import './tags.scss';
+@import "./layout";
+@import "./colors";
+@import "./inputs";
+@import "./opacity";
+@import "./margin_padding";
+@import "./buttons";
+@import "./hero";
+@import "./utilities";
+@import "./avatar";
+@import "./animista.scss";
+@import "./social.scss";
+@import "./tags.scss";
+@import "./stats.scss";
 
 @for $i from 1 through 6 {
   h#{7 - $i} {
@@ -29,13 +30,12 @@ html {
 }
 
 body {
-  min-height: calc(100vh - 60px); 
+  min-height: calc(100vh - 60px);
   margin: 0px;
 }
 
-
 body.light-mode {
-  @extend .is-light-grey-bg ;
+  @extend .is-light-grey-bg;
   color: #333;
   transition: background-color 0.3s ease;
 }
@@ -48,13 +48,10 @@ main {
   min-height: calc(100vh - 300px);
 }
 
-
-
 p {
   font-family: Lato;
   font-weight: lighter;
 }
-
 
 h1 {
   display: block;
@@ -71,7 +68,7 @@ h2 {
   display: block;
   font-family: Lato;
   font-size: 1.5em;
-  
+
   margin-bottom: 0.83em;
   margin-left: 0;
   margin-right: 0;
@@ -93,7 +90,7 @@ h4 {
   display: block;
   font-family: Lato;
   font-size: 1em;
- 
+
   margin-bottom: 1.33em;
   margin-left: 0;
   margin-right: 0;
@@ -139,7 +136,7 @@ footer {
   font-size: 10px;
 }
 
-a{
+a {
   text-decoration: none;
   font-weight: bold;
   color: inherit;
