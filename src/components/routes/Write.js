@@ -3,10 +3,19 @@ import ReactMde from "react-mde"
 import { format } from "date-fns"
 import * as Showdown from "showdown"
 import ImageUploader from "react-images-upload"
+import removeMd from "remove-markdown"
 import "react-mde/lib/styles/scss/react-mde-editor.scss"
 import "react-mde/lib/styles/scss/react-mde-toolbar.scss"
 import "react-mde/lib/styles/scss/react-mde.scss"
 import SEO from "../seo"
+
+function countWords(string) {
+  let s = string
+  s = s.replace(/(^\s*)|(\s*$)/gi, "")
+  s = s.replace(/[ ]{2,}/gi, " ")
+  s = s.replace(/\n /, "\n")
+  return s.split(" ").length
+}
 
 const converter = new Showdown.Converter({
   tables: true,
@@ -23,6 +32,7 @@ export default ({ user }) => {
   const [picture, setPicture] = useState()
   const [data, setData] = useState({})
 
+  const wordCount = countWords(removeMd(value))
   const handleChange = evt => {
     const value = evt.target.value
     setData({
@@ -123,7 +133,9 @@ export default ({ user }) => {
               </>
             ) : (
               <>
-                <p className="margin-0-b">Article Title</p>
+                <p className="margin-0-b">
+                  <i class="las la-heading"></i> Title
+                </p>
                 <input
                   className="input"
                   value={data.title}
@@ -132,9 +144,11 @@ export default ({ user }) => {
                   placeholder="My Amazing Rant"
                 />
 
-                <div className="row">
-                  <div className="col-xs-12 col-md-6 margin-3-b">
-                    <p>Cover Image</p>
+                <div className="row pad-0">
+                  <div className="col-xs-12 col-md-6 margin-3-b pad-0">
+                    <p>
+                      <i class="las la-image"></i> Cover Image
+                    </p>
 
                     <p>
                       This is the image that will be used at the top of your
@@ -149,7 +163,7 @@ export default ({ user }) => {
                       </button>
                     )}
                   </div>
-                  <div className="col-xs-12 col-md-6">
+                  <div className="col-xs-12 col-md-6 pad-0">
                     {!picture ? (
                       <div className="is-light-grey-bg border-radius">
                         <ImageUploader
@@ -181,7 +195,9 @@ export default ({ user }) => {
                     )}
                   </div>
                 </div>
-                <p className="margin-2-t margin-1-b">Tags</p>
+                <p className="margin-2-t margin-1-b">
+                  <i class="las la-tags"></i> Tags
+                </p>
                 <input
                   className="input"
                   value={data.tags}
@@ -189,7 +205,23 @@ export default ({ user }) => {
                   onChange={handleChange}
                   placeholder="UX, Accessibility, Design"
                 />
-                <p className="margin-1-t margin-2-b">Article Body</p>
+                <div
+                  className="flex margin-1-t margin-0-b align-horizontal"
+                  style={{ justifyContent: "space-between" }}
+                >
+                  <p className="margin-0">
+                    <i class="las la-quote-left"></i> Body
+                  </p>
+                  <p
+                    className={` marign-0 ${
+                      wordCount > 900 ? "is-orange" : "opacity-30"
+                    } ${wordCount > 1000 ? "is-red" : ""}`}
+                  >
+                    {" "}
+                    {wordCount}
+                    /1000 words.
+                  </p>
+                </div>
               </>
             )}
             <ReactMde

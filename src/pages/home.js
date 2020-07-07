@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { Router } from "@reach/router"
-import Layout from "../components/layout"
 import PrivateRoute from "../components/utils/PrivateRoute"
 import { useAuth } from "../components/utils/useAuth"
 import Home from "../components/routes/Home"
 import Write from "../components/routes/Write"
 import Login from "../components/Login"
-import Loader from "../components/Loader"
 import Loading from "../components/Loading"
 
 const App = () => {
