@@ -45,7 +45,10 @@
     "react-firebase-hooks": "^2.2.0",
     "react-firebaseui": "^4.1.0",
     "react-helmet": "^6.1.0",
+    "react-images-upload": "^1.2.8",
+    "react-lottie": "^1.2.3",
     "react-mde": "^10.1.0",
+    "remove-markdown": "^0.3.0",
     "showdown": "^1.9.1",
     "string-similarity": "^4.0.1"
   },

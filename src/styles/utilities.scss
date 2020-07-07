@@ -121,3 +121,21 @@
     @extend .bubble-button;
   }
 }
+
+
+.mde-header-hide {
+  display: none !important;
+}
+
+.mde-tabs {
+  display: none !important;
+}
+
+.react-mde-no-border {
+  border: none !important;
+}
+
+.fileContainer {
+  box-shadow: none !important;
+  background: none !important;
+}

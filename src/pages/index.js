@@ -8,17 +8,44 @@ const Landing = ({ data, location }) => {
   return (
     <Layout>
       <SEO title="Hi" />
-      <div className="is-black container-small margin-10-t">
-        <h1 className="margin-0">Hey there.</h1>
-        <h3>This is our super cool hero landing</h3>
-
-        <p className="margin-3-b margin-5-t">
-          Here I will take the time to tell you exactly what we're up to. This
-          will be very exiciting.
-        </p>
-        <Link to="/home">
-          <button className="bubble-button">Start Writing</button>
-        </Link>
+      <div className="is-white-bg">
+        <div className="is-black container-small pad-10-tb pad-3-lr">
+          <h1 className="margin-0 fade-in-fwd is-hero-text">Hey there,</h1>
+          <h1 className=" fade-in-bottom">
+            Enjoyed what you're reading and want to write for us?
+          </h1>
+          <Link to="/home">
+            <button className="bubble-button fade-in-bottom">
+              Start Writing
+            </button>
+          </Link>
+        </div>
+      </div>
+      <div className="is-light-grey-bg pad-10-tb pad-3-lr">
+        <div className="is-black container-small ">
+          <h1 className="">
+            Anyone can author - whether you’re a student, UX developer,
+            designer, engineer or just interested in the subject. Together,
+            let’s improve the UX around us.
+          </h1>
+        </div>
+      </div>
+      <div className="is-white-bg">
+        <div className="is-black container-small pad-10-tb pad-3-lr">
+          <h1 className="margin-0 fade-in-fwd is-hero-sub-text">Developer?</h1>
+          <h1>
+            If you're a developer and would rather submit a post via github you
+            can{" "}
+            <a
+              className="is-special-blue"
+              href="https://github.com/DesignRant/designrant-app"
+            >
+              head over to our repository
+            </a>
+            . Better yet, come and code the platform that puts its authors
+            first.
+          </h1>
+        </div>
       </div>
     </Layout>
   )
