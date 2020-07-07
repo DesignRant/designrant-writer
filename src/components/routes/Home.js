@@ -15,11 +15,26 @@ export default ({ user }) => {
             <button className="bubble-button border-radius fill-width">
               Edit Info
             </button>
+            <Link to="/home/stats">
+              <button className=" margin-1-t bubble-button border-radius fill-width">
+                Author Stats
+              </button>
+            </Link>
           </div>
         </div>
         <div className="col-xs-12 col-md-8">
           {user.articles && user.articles.length > 0 ? (
-            <div>Article List</div>
+            <div className="margin-1 is-white-bg pad-3">
+              <Link to="/home/write">
+                <button
+                  className="bubble-button border-radius fill-width"
+                  style={{ maxWidth: 450 }}
+                >
+                  Write New Post
+                </button>
+              </Link>
+              <div>Article List</div>
+            </div>
           ) : (
             <div className="margin-1 is-white-bg pad-3">
               <h2>Write your first post. </h2>

@@ -5,6 +5,7 @@ import PrivateRoute from "../components/utils/PrivateRoute"
 import { useAuth } from "../components/utils/useAuth"
 import Home from "../components/routes/Home"
 import Write from "../components/routes/Write"
+import Stats from "../components/routes/Stats"
 import Login from "../components/Login"
 
 const App = () => {
@@ -28,6 +29,12 @@ const App = () => {
         <PrivateRoute
           path="/write"
           component={Write}
+          auth={user}
+          basepath={basePath}
+        />
+        <PrivateRoute
+          path="/stats"
+          component={Stats}
           auth={user}
           basepath={basePath}
         />
