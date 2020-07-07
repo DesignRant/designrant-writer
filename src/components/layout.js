@@ -33,9 +33,7 @@ const Layout = ({ children, loggedIn }) => {
         </h4>
       </CookieConsent>
       <Header loggedIn={loggedIn} />
-      <body className="is-light-grey-bg is-black">
-        <div>{children}</div>
-      </body>
+      <body className="is-light-grey-bg is-black">{children}</body>
     </>
   )
 }
