@@ -6,12 +6,12 @@ import Twitter from "../../assets/twitter.svg"
 import Website from "../../assets/website.svg"
 
 export default ({ user }) => {
-  const rants = 12
-  const words = 10439
+  const rants = 4
+  const words = 3439
   const rantViews = 178
   const authorViews = 56
   const rantVotes = 22
-  const rantWorthy = 82 //Ensure this is rounded
+  const rantWorthy = 59 //Ensure this is rounded
   const twitterI = 123
   const websiteI = 13
   const kofiI = 7
@@ -27,7 +27,7 @@ export default ({ user }) => {
     },
     {
       id: "afsdfvdfsdsdvv",
-      title: "Disney+",
+      title: "What is DesignRant?",
       hero:
         "https://designrant.app/static/icon-4b2d12b45903abdca2ee7c635f626597.svg", // will just be a link to posts hero
       rating: 50,
@@ -84,7 +84,7 @@ export default ({ user }) => {
             />
             <h2 className="stats-user-name">{user.name}</h2>
             <p className="margin-1-t">{user.from}</p>
-            <p>Here's some juicy stats for you. See how your rants rank.</p>
+            <p>Here's some lovely stats for you. See how your rants rank.</p>
             <Link to="/home">
               <button className=" margin-1-t bubble-button border-radius fill-width">
                 Back Home
