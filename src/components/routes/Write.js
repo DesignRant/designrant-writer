@@ -137,7 +137,7 @@ export default ({ user }) => {
                     <p>Cover Image</p>
 
                     <p>
-                      This is the image that will be used at the topic of your
+                      This is the image that will be used at the top of your
                       article and in the SEO.
                     </p>
                     {picture && (
@@ -151,18 +151,20 @@ export default ({ user }) => {
                   </div>
                   <div className="col-xs-12 col-md-6">
                     {!picture ? (
-                      <ImageUploader
-                        buttonClassName="bubble-button"
-                        className=""
-                        withIcon={true}
-                        withPreview={true}
-                        buttonText="Choose images"
-                        onChange={onDrop}
-                        imgExtension={[".jpg", ".png"]}
-                        maxFileSize={2621440}
-                        singleImage={true}
-                        label="Max file size: 2.5mb, accepted: jpg|png"
-                      />
+                      <div className="is-light-grey-bg border-radius">
+                        <ImageUploader
+                          buttonClassName="bubble-button"
+                          className=""
+                          withIcon={true}
+                          withPreview={true}
+                          buttonText="Choose images"
+                          onChange={onDrop}
+                          imgExtension={[".jpg", ".png"]}
+                          maxFileSize={2621440}
+                          singleImage={true}
+                          label="Max file size: 2.5mb, accepted: jpg|png"
+                        />
+                      </div>
                     ) : (
                       <div style={{ width: "100%" }} className="shadow">
                         <img
