@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import ReactMde from "react-mde"
+import { format } from "date-fns"
 import * as Showdown from "showdown"
+import ImageUploader from "react-images-upload"
 import "react-mde/lib/styles/css/react-mde-all.css"
 
 const converter = new Showdown.Converter({
@@ -13,6 +15,7 @@ const converter = new Showdown.Converter({
 export default ({ user }) => {
   const [value, setValue] = useState("**Hello world!!!**")
   const [selectedTab, setSelectedTab] = useState("write")
+  const [picture, setPicture] = useState()
   const [data, setData] = useState({})
 
   const handleChange = evt => {
@@ -30,43 +33,155 @@ export default ({ user }) => {
       setSelectedTab("write")
     }
   }
+
+  const onDrop = (picture, pictureDataURLs) => {
+    setPicture(pictureDataURLs[0])
+  }
   return (
     <div className="container-small">
-      <div className="row margin-5-t">
+      <div className="row pad-5-t">
         <div className="col-xs-12 col-md-9">
-          <div className="margin-1 is-white-bg">
-            <h3 className="margin-0-b">Article Title</h3>
+          <div
+            className={` is-white-bg ${
+              selectedTab === "write" ? "pad-1-t pad-2-lr" : ""
+            }`}
+          >
+            {selectedTab === "preview" ? (
+              <>
+                <img
+                  src={picture}
+                  className="shadow"
+                  style={{ width: "100%", maxHeight: 300, objectFit: "cover" }}
+                />
+                <div className=" pad-3">
+                  <h1
+                    style={{
+                      marginBottom: 0,
+                    }}
+                  >
+                    {data.title}
+                  </h1>
+                  <div className="flex align-horizontal margin-2-t">
+                    <p className="is-black margin-0 margin-1-r">
+                      {format(new Date(), "MMMM dd, yyyy")}
+                    </p>
+                  </div>
+                  <div className="flex align-horizontal margin-2-t">
+                    {data.tags.split(",").map((item, index) => (
+                      <p
+                        className={`tag-primary ${
+                          index !== 0 ? "margin-1-l" : ""
+                        }`}
+                      >
+                        {item.trim()}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="margin-0-b">Article Title</p>
+                <input
+                  className="input"
+                  value={data.title}
+                  name="title"
+                  onChange={handleChange}
+                  placeholder="My Amazing Rant"
+                />
 
-            <input
-              className="input"
-              value={data.title}
-              name="title"
-              onChange={handleChange}
-              placeholder="My Amazing Rant"
-            />
-            <h3 className="margin-0-b">Article Content</h3>
+                <div className="row">
+                  <div className="col-xs-12 col-md-6 margin-3-b">
+                    <p>Cover Image</p>
+
+                    <p>
+                      This is the image that will be used at the topic of your
+                      article and in the SEO.
+                    </p>
+                    {picture && (
+                      <button
+                        className="bubble-button border-radius"
+                        onClick={() => setPicture(undefined)}
+                      >
+                        Choose New Image
+                      </button>
+                    )}
+                  </div>
+                  <div className="col-xs-12 col-md-6">
+                    {!picture ? (
+                      <ImageUploader
+                        buttonClassName="bubble-button"
+                        className=""
+                        withIcon={true}
+                        withPreview={true}
+                        buttonText="Choose images"
+                        onChange={onDrop}
+                        imgExtension={[".jpg", ".png"]}
+                        maxFileSize={2621440}
+                        singleImage={true}
+                        label="Max file size: 2.5mb, accepted: jpg|png"
+                      />
+                    ) : (
+                      <div style={{ width: "100%" }} className="shadow">
+                        <img
+                          src={picture}
+                          className="block"
+                          style={{
+                            objectPosition: "50% 50%",
+                            objectFit: "cover",
+                            width: "100%",
+                            height: 200,
+                          }}
+                        ></img>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <p className="margin-2-t margin-1-b">Tags</p>
+                <input
+                  className="input"
+                  value={data.tags}
+                  name="tags"
+                  onChange={handleChange}
+                  placeholder="UX, Accessibility, Design"
+                />
+                <p className="margin-1-t margin-2-b">Article Body</p>
+              </>
+            )}
             <ReactMde
               value={value}
               onChange={setValue}
               selectedTab={selectedTab}
               onTabChange={switchTab}
               classes={{
-                toolbar: "lato",
+                reactMde: ` ${
+                  selectedTab === "preview" ? "react-mde-no-border " : ""
+                }`,
+                toolbar: `lato ${
+                  selectedTab === "preview" ? "mde-header-hide" : ""
+                }`,
               }}
-              // toolbarCommands={[["code", "bold"], ["italic"]]}
               generateMarkdownPreview={markdown =>
-                Promise.resolve(
-                  converter.makeHtml(
-                    `${data.title ? `#${data.title}\n` : ""}` + markdown
-                  )
-                )
+                Promise.resolve(converter.makeHtml(markdown))
               }
             />
           </div>
         </div>
         <div className="col-xs-12 col-md-3">
-          <div className="margin-1 is-white-bg pad-3">
+          <div className=" is-white-bg pad-3">
             <p className="margin-1-t">
+              {selectedTab === "preview"
+                ? "Go back to editing your article."
+                : " Preview your article as it will appear on DesignRant."}
+            </p>
+            <button
+              className="bubble-button border-radius fill-width"
+              style={{ maxWidth: 450 }}
+              onClick={switchTab}
+            >
+              {selectedTab === "preview" ? "Edit" : "Preview"}
+            </button>
+            <p className="margin-3-t">
               When you're ready you can hit the button below to submit your
               article.
             </p>

@@ -6,20 +6,14 @@ import { useAuth } from "../components/utils/useAuth"
 import Home from "../components/routes/Home"
 import Write from "../components/routes/Write"
 import Login from "../components/Login"
+import Loader from "../components/Loader"
+import Loading from "../components/Loading"
 
 const App = () => {
   const { initializing, user } = useAuth()
   console.log("HERE")
   if (initializing) {
-    return (
-      <Layout>
-        <div className="row container">
-          <div className="col-xs-12 margin-5-b text-align-center">
-            <h2>Loading...</h2>
-          </div>
-        </div>
-      </Layout>
-    )
+    return <Loading LoadingText="Loading Account" />
   } else {
     const basePath = "/home"
     return (

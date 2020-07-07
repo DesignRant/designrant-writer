@@ -3,6 +3,7 @@ import { navigate } from "gatsby"
 import { useDocumentData } from "react-firebase-hooks/firestore"
 import Layout from "../layout"
 import AuthorSignUp from "../AuthorSignUp"
+import Loading from "../Loading"
 
 let firebase
 
@@ -29,15 +30,7 @@ const PrivateRoute = ({
   }
   const userObj = { ...auth, ...user }
   if (userLoading) {
-    return (
-      <Layout>
-        <div className="row container">
-          <div className="col-xs-12 margin-5-b text-align-center">
-            <h2>Loading...</h2>
-          </div>
-        </div>
-      </Layout>
-    )
+    return <Loading />
   }
   if (!user && !userLoading && !userError) {
     return (

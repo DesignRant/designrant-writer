@@ -6,7 +6,7 @@ import Header from "./Header"
 
 const Layout = ({ children, loggedIn }) => {
   return (
-    <div className="is-grey">
+    <>
       <Helmet>
         <link
           rel="stylesheet"
@@ -33,14 +33,10 @@ const Layout = ({ children, loggedIn }) => {
         </h4>
       </CookieConsent>
       <Header loggedIn={loggedIn} />
-      <body className="is-light-grey-bg">
-        <div className="row">
-          <div className="col-xs-12 is-black ">
-            <div className="margin-1-lr">{children}</div>
-          </div>
-        </div>
+      <body className="is-light-grey-bg is-black">
+        <div>{children}</div>
       </body>
-    </div>
+    </>
   )
 }
 

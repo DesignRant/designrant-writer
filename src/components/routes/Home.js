@@ -5,7 +5,7 @@ export default ({ user }) => {
   console.log(user)
   return (
     <div className="container-small">
-      <div className="row margin-5-t">
+      <div className="row pad-5-t">
         <div className="col-xs-12 col-md-4">
           <div className="margin-1 is-white-bg pad-3">
             <p className="margin-1-tb">AUTHOR SUMMARY</p>
