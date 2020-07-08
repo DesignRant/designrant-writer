@@ -1,55 +1,6 @@
-.stats-user-name {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.large-number {
-  font-size: 1.2 * 1em;
-  font-weight: bolder;
-}
-
-.interactions {
-  display: flex;
-  flex-direction: column;
-}
-
-.interactions-row {
-  display: flex;
-  flex-direction: row;
-  max-height: 75px;
-  margin: 10px 0px;
-}
-.interactions-row:first-child {
-  margin: 0px;
-}
-
-.interactions-column {
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .interactions-link {
   max-height: 75px;
-  display: flex;
   align-items: center;
-}
-
-.top-rants-row {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-.top-rants-title {
-  flex-grow: 1;
-}
-
-.top-rants-rating {
-  min-width: 100px;
-  margin-left: 20px;
 }
 
 .social {
@@ -59,27 +10,31 @@
   margin-right: 10px;
 }
 
-@media only screen and (max-width: 600px) {
-  .interactions-row {
-    max-height: 100px;
-  }
-  .interactions-link {
-    flex-direction: column;
-    max-height: 100px;
-  }
+.large-number {
+  font-size: 1.2 * 1em;
+  font-weight: bolder;
+}
+
+.align-interactions-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.top-rants {
+  border: unset;
+}
+
+@media only screen and (max-width: 700px) {
   .interactions-link > h3 {
     display: none;
   }
-  .interactions-column {
-    justify-content: center;
-  }
+}
 
-  .top-rants-row {
+@media only screen and (max-width: 767px) {
+  .top-rants {
     flex-direction: column;
     border-bottom: black solid 2px;
     text-align: center;
-  }
-  .top-rants-rating {
-    margin-left: 0px;
+    margin-bottom: 10px;
   }
 }

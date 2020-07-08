@@ -95,8 +95,8 @@ export default ({ user }) => {
         <div className="col-xs-12 col-md-8">
           {/* {user.articles && user.articles.length > 0 ? ( */}
           {1 > 0 ? (
-            <div>
-              <div className="margin-1 is-white-bg pad-3">
+            <div className="row">
+              <div className="col-xs-12 margin-2-b is-white-bg pad-3">
                 <h1>The Numbers</h1>
                 <h3>
                   You have written
@@ -161,68 +161,76 @@ export default ({ user }) => {
                   )}
                 </h3>
               </div>
-              <div className="margin-1 is-white-bg pad-3">
+              <div className="col-xs-12 margin-2-b is-white-bg pad-3">
                 <h1>It's All About You</h1>
                 <h3>
                   How much attention have you caught? Let's see how your
                   personal links have been interacted with.
                 </h3>
-                <div className="interactions">
-                  <div className="interactions-row">
-                    <div className="interactions-column">
+                <div className="col-xs-12 pad-0">
+                  <div className="row">
+                    <div className="col-xs-6 pad-0">
                       <h3>Link</h3>
                     </div>
-                    <div className="interactions-column">
+                    <div className="col-xs-6">
                       <h3>Interactions</h3>
                     </div>
                   </div>
                   {user.website && (
-                    <div className="interactions-row">
-                      <div className="interactions-column">
+                    <div className="row">
+                      <div className="col-xs-6 pad-0">
                         <a
                           href={user.website}
                           target="_blank"
                           rel="noreferrer"
-                          className="interactions-link"
+                          className="row interactions-link"
                         >
-                          <img
-                            src={Website}
-                            className="social grow-lg"
-                            alt="website"
-                          />
-                          <h3>{user.website}</h3>
+                          <div className="col-xs-3 pad-0 interactions-link">
+                            <img
+                              src={Website}
+                              className="social grow-lg"
+                              alt="website"
+                            />
+                          </div>
+                          <div className="col-xs-9 pad-2-l interactions-link">
+                            <h3>{user.website}</h3>
+                          </div>
                         </a>
                       </div>
-                      <div className="interactions-column">
+                      <div className="col-xs-6 align-interactions-vertical">
                         <h3 className="large-number">{websiteI}</h3>
                       </div>
                     </div>
                   )}
                   {user.twitter && (
-                    <div className="interactions-row">
-                      <div className="interactions-column">
+                    <div className="row">
+                      <div className="col-xs-6 pad-0">
                         <a
                           href={`https://twitter.com/${user.twitter}/`}
                           target="_blank"
                           rel="noreferrer"
-                          className="interactions-link"
+                          className="row interactions-link"
                         >
-                          <img
-                            src={Twitter}
-                            className="social grow-lg"
-                            alt="twitter"
-                          />
-                          <h3>{user.twitter}</h3>
+                          <div className="col-xs-3 pad-0 interactions-link">
+                            <img
+                              src={Twitter}
+                              className="social grow-lg"
+                              alt="twitter"
+                            />
+                          </div>
+                          <div className="col-xs-9 pad-2-l interactions-link">
+                            <h3>{user.twitter}</h3>
+                          </div>
                         </a>
                       </div>
-                      <div className="interactions-column">
+                      <div className="col-xs-6 align-interactions-vertical">
                         <h3 className="large-number">{twitterI}</h3>
                       </div>
                     </div>
                   )}
                   {(user.kofi || user.buymeacoffee) && (
-                    <div className="interactions-row">
-                      <div className="interactions-column">
+                    <div className="row">
+                      <div className="col-xs-6 pad-0">
                         <a
                           href={
                             user.kofi
@@ -231,21 +239,25 @@ export default ({ user }) => {
                           }
                           target="_blank"
                           rel="noreferrer"
-                          className="interactions-link"
+                          className="row interactions-link"
                         >
-                          <img
-                            src={Coffee}
-                            className="social grow-lg"
-                            alt="coffee"
-                          />
-                          <h3>
-                            {user.kofi
-                              ? `https://ko-fi.com/${user.kofi}/`
-                              : `https://www.buymeacoffee.com/${user.buymeacoffee}`}
-                          </h3>
+                          <div className="col-xs-3 pad-0 interactions-link">
+                            <img
+                              src={Coffee}
+                              className="social grow-lg"
+                              alt="coffee"
+                            />
+                          </div>
+                          <div className="col-xs-9 pad-2-l interactions-link">
+                            <h3>
+                              {user.kofi
+                                ? `https://ko-fi.com/${user.kofi}/`
+                                : `https://www.buymeacoffee.com/${user.buymeacoffee}`}
+                            </h3>
+                          </div>
                         </a>
                       </div>
-                      <div className="interactions-column">
+                      <div className="col-xs-6 align-interactions-vertical">
                         <h3 className="large-number">
                           {user.kofi ? kofiI : buymeacoffeeI}{" "}
                         </h3>
@@ -254,33 +266,37 @@ export default ({ user }) => {
                   )}
                 </div>
               </div>
-              <div className="margin-1 is-white-bg pad-3">
+              <div className="col-xs-12 margin-2-b is-white-bg pad-3">
                 <h1>Your Top Rants</h1>
-                <div>
-                  {orderedPosts.length > 0 &&
-                    orderedPosts.map((post, index) => {
-                      if (index > 4) return
-                      else
-                        return (
-                          <a href={post.link} target="_blank" rel="noreferrer">
-                            <div
-                              key={`post-${post.id}`}
-                              className="top-rants-row"
-                            >
+                {orderedPosts.length > 0 &&
+                  orderedPosts.map((post, index) => {
+                    if (index > 4) return
+                    else
+                      return (
+                        <a href={post.link} target="_blank" rel="noreferrer">
+                          <div
+                            key={`post-${post.id}`}
+                            className="row align-interactions-vertical top-rants is-black-border"
+                          >
+                            <div className="col-xs-12 col-sm-2">
                               <img
                                 src={post.hero}
                                 className="social"
                                 alt="hero"
                               />
+                            </div>
+                            <div className="col-xs-12 col-sm-8">
                               <h3 className="top-rants-title">{post.title}</h3>
+                            </div>
+                            <div className="col-xs-12 col-sm-2">
                               <h3 className="top-rants-rating">
                                 {post.rating}% Rating
                               </h3>
                             </div>
-                          </a>
-                        )
-                    })}
-                </div>
+                          </div>
+                        </a>
+                      )
+                  })}
               </div>
             </div>
           ) : (
