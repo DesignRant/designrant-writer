@@ -2,7 +2,7 @@ import "./src/styles/global.scss"
 
 let firebase
 
-if (typeof window !== "undefined" && !process.env.GATSBY_IS_LIVE) {
+if (typeof window !== "undefined" && process.env.GATSBY_IS_LIVE !== "true") {
   if (
     window.location.pathname !== "/comingsoon" &&
     window.location.pathname !== "/comingsoon/"
