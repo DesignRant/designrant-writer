@@ -12,7 +12,7 @@ export default ({ loggedIn }) => {
     <div className="is-black-bg is-white">
       <div className="row pad-2-tb pad-1-lr">
         <div className="col-xs-6 ">
-          <Link to="/home">
+          <Link to={process.env.GATSBY_IS_LIVE !== "true" ? "/comingsoon/" : "/home"}>
             <div className="flex align-horizontal">
               <img src={Logo} className="grow logo" />
             </div>
