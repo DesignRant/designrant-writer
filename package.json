@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/slarsendisney/designrant-writer#readme",
   "dependencies": {
+    "base-64": "^0.1.0",
     "date-fns": "^2.14.0",
     "dotenv": "^8.2.0",
     "firebase": "^7.15.5",
@@ -50,7 +51,8 @@
     "react-mde": "^10.1.0",
     "remove-markdown": "^0.3.0",
     "showdown": "^1.9.1",
-    "string-similarity": "^4.0.1"
+    "string-similarity": "^4.0.1",
+    "utf8": "^3.0.0"
   },
   "devDependencies": {
     "prettier": "2.0.5"
